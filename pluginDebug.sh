@@ -1,0 +1,1 @@
+./gradlew clean :app:assembleDebug -Dorg.gradle.debug=true --no-daemon

@@ -44,7 +44,12 @@ open class WillFixTransform(private val context: WillFixContext) : Transform() {
 
     override fun transform(transformInvocation: TransformInvocation?) {
         super.transform(transformInvocation)
-        context.init()
+        context.init(transformInvocation)
+
+        if (!context.isEnable()) {
+            return
+        }
+
         transformInvocation?.let {
             val contentLocation =
                 it.outputProvider.getContentLocation(name, outputTypes, scopes, Format.DIRECTORY)

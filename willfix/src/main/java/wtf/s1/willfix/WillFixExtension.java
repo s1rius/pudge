@@ -11,6 +11,8 @@ public class WillFixExtension {
      */
     public boolean enable = true;
 
+    public boolean enableInDebug = false;
+
     public boolean isEnable() {
         return enable;
     }
@@ -52,4 +54,11 @@ public class WillFixExtension {
         return level;
     }
 
+    public boolean isEnableInDebug() {
+        return enableInDebug;
+    }
+
+    public void enableInDebug(boolean enableInDebug) {
+        this.enableInDebug = enableInDebug;
+    }
 }

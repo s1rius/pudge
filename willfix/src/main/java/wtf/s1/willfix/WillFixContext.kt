@@ -1,5 +1,6 @@
 package wtf.s1.willfix
 
+import com.android.build.api.transform.TransformInvocation
 import org.gradle.api.Project
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.ClassWriter
@@ -13,13 +14,15 @@ import kotlin.collections.HashSet
 
 open class WillFixContext(
     private val project: Project?,
-    private val extension: WillFixExtension?
+    private val extension: WillFixExtension
 ) {
 
+    private var transformInvocation: TransformInvocation? = null
     private val mOptimizationNeededMethods: MutableMap<String, Set<String>> = HashMap()
 
-    fun init() {
-        if (extension?.enable == false) {
+    fun init(transformInvocation: TransformInvocation?) {
+        this.transformInvocation = transformInvocation
+        if (!extension?.enable) {
             logger().w("will fix plugin disable")
             return
         }
@@ -124,4 +127,12 @@ open class WillFixContext(
     }
 
     private val logger: ILogger = LevelLog()
+
+    open fun isReleaseBuild(): Boolean {
+        return transformInvocation?.context?.variantName?.toLowerCase()?.contains("release")?:false
+    }
+
+    fun isEnable(): Boolean {
+        return extension.isEnable && (extension.isEnableInDebug || isReleaseBuild())
+    }
 }

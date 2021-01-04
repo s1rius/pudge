@@ -15,7 +15,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "wtf.s1.pudge:will-fix-plugin:0.0.1"
+        classpath "wtf.s1.pudge:will-fix-plugin:0.0.2"
         classpath 'com.google.firebase:perf-plugin:1.3.1'  // Performance Monitoring plugin
     }
 }
@@ -70,6 +70,7 @@ dependencies {
 apply plugin: "s1.willfix"
 willFix {
     enable true
+    enableInDebug true
     logLevel "INFO"
     methodList = [
             "wtf.s1.willfix.TestSetGet#getDesc#()I",

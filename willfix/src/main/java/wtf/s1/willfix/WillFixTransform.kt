@@ -45,11 +45,6 @@ open class WillFixTransform(private val context: WillFixContext) : Transform() {
     override fun transform(transformInvocation: TransformInvocation?) {
         super.transform(transformInvocation)
         context.init(transformInvocation)
-
-        if (!context.isEnable()) {
-            return
-        }
-
         transformInvocation?.let {
             val contentLocation =
                 it.outputProvider.getContentLocation(name, outputTypes, scopes, Format.DIRECTORY)
@@ -139,6 +134,10 @@ open class WillFixTransform(private val context: WillFixContext) : Transform() {
     }
 
     private fun needManipulate(fileName: String): Boolean {
+        if (!context.isEnable()) {
+            return false
+        }
+
         return (fileName.endsWith(SdkConstants.DOT_CLASS)
                 && !fileName.endsWith("R.class")
                 && !fileName.endsWith("BuildConfig.class")

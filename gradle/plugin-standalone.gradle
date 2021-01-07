@@ -1,0 +1,11 @@
+apply plugin: "s1.willfix"
+willFix {
+    enable true
+    enableInDebug true
+    logLevel "INFO"
+    methodList = [
+            "wtf.s1.willfix.TestSetGet#getDesc#()I",
+            "wtf.s1.willfix.TestSetGet#setDesc#(Ljava/lang/String;Z)V",
+            "com.google.firebase.perf.network.InstrumentOkHttpEnqueueCallback#onResponse#(Lokhttp3/Call;Lokhttp3/Response;)V"
+    ]
+}

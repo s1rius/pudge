@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +13,6 @@ class MainActivity : AppCompatActivity() {
 
         val a = TestSetGet()
         a.setDesc("", true)
-        a.getDesc()
+        Log.i("willfix", "${a.getDesc()}")
     }
 }

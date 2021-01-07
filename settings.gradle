@@ -1,3 +1,5 @@
 rootProject.name = "WillFix"
 include ':app'
 include ':willfix-standalone'
+include ':willfix-core'
+include ':willfix-bytex'

@@ -1,7 +1,7 @@
 package wtf.s1.buildsrc
 
 object Versions{
-    const val applicationId = "wtf.s1.aaa"
+    const val asm = "8.0.1"
     const val kotlin = "1.3.71"
     const val ktx = "1.0.0"
     const val coroutines = "1.3.2"
@@ -12,6 +12,7 @@ object Versions{
     const val targetSdkVersion = 28
     const val versionCode = 1
     const val versionName = "1.0.0"
+    const val bytex ="0.2.6"
 }
 
 object Plugins{
@@ -40,6 +41,16 @@ object Deps{
         object Core {
             const val utils = "androidx.legacy:legacy-support-core-utils:1.0.0"
         }
+    }
+
+    object ByteX {
+        const val common = "com.bytedance.android.byteX:common:${Versions.bytex}"
+    }
+
+    object ASM {
+        const val asm = "org.ow2.asm:asm:${Versions.asm}"
+        const val asmUtil = "org.ow2.asm:asm-util:${Versions.asm}"
+        const val asmCommons = "org.ow2.asm:asm-commons:${Versions.asm}"
     }
 }
 

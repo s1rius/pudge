@@ -1,15 +1,19 @@
 package wtf.s1.willfix.logging;
 
 
+import wtf.s1.willfix.core.ILogger;
+
 public class LevelLog implements ILogger {
 
+
     public static ILogger sDefaultLogger = new LevelLog();
+    public static ILogger DEFAULT = new SystemOutputImpl();
 
     private ILogger logger;
     private Level level = Level.INFO;
 
     public LevelLog() {
-        this(ILogger.DEFAULT);
+        this(DEFAULT);
     }
 
     public LevelLog(ILogger logger) {

@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
+import wtf.s1.willfix.core.ILogger;
+
 
 public abstract class BaseLogger implements ILogger, Closeable {
     private static final String DEFAULT_TAG = "WillFix";

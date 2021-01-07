@@ -13,12 +13,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
  */
-package wtf.s1.willfix.logging;
+package wtf.s1.willfix.core;
 
 
 public interface ILogger {
-
-    ILogger DEFAULT = new SystemOutputImpl();
 
     void setTag(String tag);
 

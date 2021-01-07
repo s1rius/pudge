@@ -1,4 +1,4 @@
-package wtf.s1.willfix
+package wtf.s1.willfix.core
 
 import org.objectweb.asm.Opcodes
 import org.objectweb.asm.Type

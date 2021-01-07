@@ -1,0 +1,40 @@
+import wtf.s1.buildsrc.ClassPaths
+import wtf.s1.buildsrc.Deps
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "https://repo.commonsware.com.s3.amazonaws.com"
+        }
+        maven { url "https://dl.bintray.com/s1rius/pudge" }
+    }
+}
+
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'kotlin'
+
+apply from: rootProject.file('release.gradle')
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation(project(":willfix-core"))
+    compileOnly("com.android.tools.build:gradle:3.6.3")
+    implementation("com.android.tools.build:gradle-api:3.6.3")
+    implementation(Deps.ByteX.common)
+
+}
+
+
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+version = VERSION_NAME
+group = GROUP

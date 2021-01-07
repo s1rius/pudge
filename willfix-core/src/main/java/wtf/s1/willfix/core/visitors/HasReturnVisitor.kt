@@ -1,13 +1,13 @@
-package wtf.s1.willfix.visitors
+package wtf.s1.willfix.core.visitors
 
 import org.objectweb.asm.*
 import org.objectweb.asm.commons.AdviceAdapter
-import wtf.s1.willfix.WillFixContext
-import wtf.s1.willfix.const0Opcode
+import wtf.s1.willfix.core.IWillFixContext
+import wtf.s1.willfix.core.const0Opcode
 import java.lang.RuntimeException
 
 class HasReturnVisitor(
-    private val context: WillFixContext,
+    private val context: IWillFixContext,
     methodVisitor: MethodVisitor,
     api: Int,
     access: Int,

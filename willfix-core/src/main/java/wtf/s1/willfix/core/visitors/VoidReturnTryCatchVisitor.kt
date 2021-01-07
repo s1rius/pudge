@@ -1,11 +1,11 @@
-package wtf.s1.willfix.visitors
+package wtf.s1.willfix.core.visitors
 
 import org.objectweb.asm.*
 import org.objectweb.asm.commons.AdviceAdapter
-import wtf.s1.willfix.WillFixContext
+import wtf.s1.willfix.core.IWillFixContext
 
 class VoidReturnTryCatchVisitor(
-    private val context: WillFixContext,
+    private val context: IWillFixContext,
     methodVisitor: MethodVisitor,
     api: Int,
     access: Int,

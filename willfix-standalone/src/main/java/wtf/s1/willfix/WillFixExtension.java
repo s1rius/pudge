@@ -13,6 +13,17 @@ public class WillFixExtension {
 
     public boolean enableInDebug = false;
 
+    public boolean needVerify = true;
+
+    /**
+     * 需要用TryCatchBlock包住的方法
+     */
+    public List<String> methodList;
+
+    public String separator = "#";
+
+    private LevelLog.Level level = LevelLog.Level.INFO;
+
     public boolean isEnable() {
         return enable;
     }
@@ -37,15 +48,6 @@ public class WillFixExtension {
         this.separator = separator;
     }
 
-    /**
-     * 需要用TryCatchBlock包住的方法
-     */
-    public List<String> methodList;
-
-    public String separator = "#";
-
-    private LevelLog.Level level = LevelLog.Level.INFO;
-
     public void logLevel(String level) {
         this.level = LevelLog.Level.valueOf(level);
     }
@@ -60,5 +62,13 @@ public class WillFixExtension {
 
     public void enableInDebug(boolean enableInDebug) {
         this.enableInDebug = enableInDebug;
+    }
+
+    public boolean isNeedVerify() {
+        return needVerify;
+    }
+
+    public void needVerify(boolean needVerify) {
+        this.needVerify = needVerify;
     }
 }

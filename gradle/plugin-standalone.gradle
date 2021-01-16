@@ -2,6 +2,7 @@ apply plugin: "s1.willfix"
 willFix {
     enable true
     enableInDebug true
+    needVerify true
     logLevel "INFO"
     methodList = [
             "wtf.s1.willfix.TestSetGet#getDesc#()I",

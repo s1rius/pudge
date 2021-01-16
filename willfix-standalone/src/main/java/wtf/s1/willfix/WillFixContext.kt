@@ -30,6 +30,10 @@ open class WillFixContext(
             return
         }
 
+        if (extension?.isNeedVerify == true) {
+            logger().i("verify enable")
+        }
+
         extension?.logLevel?.let {
             if (logger is LevelLog) {
                 logger.setLevel(it)
@@ -80,5 +84,9 @@ open class WillFixContext(
 
     fun isEnable(): Boolean {
         return extension?.isEnable == true && (extension.isEnableInDebug || isReleaseBuild())
+    }
+
+    fun needVerify(): Boolean {
+        return extension?.isNeedVerify ?: true
     }
 }

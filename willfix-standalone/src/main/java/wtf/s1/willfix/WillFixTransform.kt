@@ -8,6 +8,7 @@ import com.android.build.api.transform.TransformInvocation
 import org.apache.commons.codec.digest.DigestUtils
 import org.apache.commons.io.FileUtils
 import org.objectweb.asm.*
+import org.objectweb.asm.tree.ClassNode
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -138,17 +139,25 @@ open class WillFixTransform(private val context: WillFixContext) : Transform() {
             return false
         }
 
-        return (fileName.endsWith(SdkConstants.DOT_CLASS)
+        return fileName.endsWith(SdkConstants.DOT_CLASS)
                 && !fileName.endsWith("R.class")
                 && !fileName.endsWith("BuildConfig.class")
-                && !fileName.contains("R\$"))
+                && !fileName.contains("R\$")
     }
 
     private fun manipulate(byteArray: ByteArray): ByteArray {
         val classReader = ClassReader(byteArray)
         val classWriter = ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)
         classReader.accept(getClassVisitor(classWriter), ClassReader.EXPAND_FRAMES)
-        return classWriter.toByteArray()
+        val bytes = classWriter.toByteArray()
+
+        if (context.needVerify()) {
+            val verifyNode = ClassNode()
+            ClassReader(bytes).accept(verifyNode, ClassReader.EXPAND_FRAMES)
+            WillFixVerify.verify(verifyNode)
+        }
+
+        return bytes
     }
 
     private fun getClassVisitor(cw: ClassWriter): ClassVisitor {

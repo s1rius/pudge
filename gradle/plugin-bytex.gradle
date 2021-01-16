@@ -9,7 +9,7 @@ apply plugin: "s1.willfix.bytex"
 willFixByteX {
     enable true
     enableInDebug true
-    logLevel "INFO"
+    logLevel "DEBUG"
     methodList = [
             "wtf.s1.willfix.TestSetGet#getDesc#()I",
             "wtf.s1.willfix.TestSetGet#setDesc#(Ljava/lang/String;Z)V",

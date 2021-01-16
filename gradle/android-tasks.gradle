@@ -16,7 +16,6 @@ afterEvaluate { project ->
     def isAndroid = project.getPlugins().hasPlugin('com.android.application') || project.getPlugins().hasPlugin('com.android.library')
 
     if (isAndroid) {
-        print("android project ")
         task androidJavadoc(type: Javadoc) {
             source = android.sourceSets.main.java.srcDirs
             exclude '**/pom.xml'
@@ -44,7 +43,6 @@ afterEvaluate { project ->
         artifacts.add('archives', androidJavadocJar)
         artifacts.add('archives', androidSourcesJar)
     } else {
-        print("java project")
         task javadocJar_(type: Jar) {
             classifier = 'javadoc'
             from "$buildDir/javadoc"

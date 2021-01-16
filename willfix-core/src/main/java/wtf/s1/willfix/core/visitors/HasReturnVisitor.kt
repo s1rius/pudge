@@ -19,6 +19,7 @@ class HasReturnVisitor(
     private val error = "java/lang/Exception"
     private lateinit var from: Label
     private lateinit var to: Label
+    private var tryCatchLabelMap = hashMapOf<Label, Label>()
     private val target = Label()
 
     override fun visitCode() {
@@ -50,7 +51,9 @@ class HasReturnVisitor(
         mv.visitInsn(returnType.const0Opcode())
         mv.visitVarInsn(returnType.getOpcode(ISTORE), tempStore)
         from = newLabel()
-        to = newLabel()
+        to = newLabel().apply {
+            tryCatchLabelMap[from] = this
+        }
         visitTryCatchBlock(
             from,
             to,
@@ -65,7 +68,15 @@ class HasReturnVisitor(
         mv.visitVarInsn(returnType.getOpcode(ISTORE), tempStore)
         mv.visitVarInsn(returnType.getOpcode(ILOAD), tempStore)
 
-        mv.visitLabel(to)
+        // prevent double visit same Label
+        // `ByteX` will throw IllegalException when double visit
+        // 防止重复的对 to Label 访问，造成 `ByteX` 中 SafeMethodNode 的检查不通过
+        //
+        // todo figure out why double visit
+        tryCatchLabelMap.remove(from)?.let {
+            mv.visitLabel(it)
+        }
+
         context.logger().d("onMethodExit")
         super.onMethodExit(opcode)
     }

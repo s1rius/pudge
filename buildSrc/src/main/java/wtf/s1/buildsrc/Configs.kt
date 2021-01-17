@@ -2,10 +2,10 @@ package wtf.s1.buildsrc
 
 object Versions{
     const val asm = "8.0.1"
-    const val kotlin = "1.3.71"
+    const val kotlin = "1.4.21"
     const val ktx = "1.0.0"
     const val coroutines = "1.3.2"
-    const val gradlePlugin ="3.5.1"
+    const val gradlePlugin ="3.6.3"
     const val lifecycle = "2.2.0"
     const val compileSdkVersion = 28
     const val minSdkVersion = 15
@@ -56,6 +56,7 @@ object Deps{
 
 object ClassPaths {
     const val gradlePlugin = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
+    const val gradleApi = "com.android.tools.build:gradle-api:${Versions.gradlePlugin}"
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val jfrogBintray = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
     const val dcendentsMavenPlugin = "com.github.dcendents:android-maven-gradle-plugin:2.1"

@@ -24,11 +24,11 @@ dependencies {
     implementation(Deps.Kotlin.stdLib)
     implementation(gradleApi())
     implementation(localGroovy())
-    implementation("com.android.tools.build:gradle:3.6.3")
-    implementation("com.android.tools.build:gradle-api:3.6.3")
-    implementation("org.ow2.asm:asm:8.0.1")
-    implementation("org.ow2.asm:asm-util:8.0.1")
-    implementation("org.ow2.asm:asm-commons:8.0.1")
+    implementation(ClassPaths.gradlePlugin)
+    implementation(ClassPaths.gradleApi)
+    implementation(Deps.ASM.asm)
+    implementation(Deps.ASM.asmUtil)
+    implementation(Deps.ASM.asmCommons)
 
     testImplementation 'junit:junit:4.13'
 }

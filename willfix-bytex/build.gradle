@@ -20,8 +20,8 @@ apply from: rootProject.file('release.gradle')
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation(project(":willfix-core"))
-    compileOnly("com.android.tools.build:gradle:3.6.3")
-    implementation("com.android.tools.build:gradle-api:3.6.3")
+    compileOnly(ClassPaths.gradlePlugin)
+    implementation(ClassPaths.gradleApi)
     implementation(Deps.ByteX.common)
 
 }

@@ -17,7 +17,6 @@ buildscript {
         classpath ClassPaths.kotlinPlugin
         classpath ClassPaths.dcendentsMavenPlugin
         classpath ClassPaths.jfrogBintray
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21"
     }
 }
 

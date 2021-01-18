@@ -13,11 +13,13 @@ class VoidReturnTryCatchVisitor(
     descriptor: String?
 ) : AdviceAdapter(api, methodVisitor, access, name, descriptor) {
 
+    private val error = IWillFixContext.ERR
+
     private var finalGoLabel: Label? = null
-    private val error = "java/lang/Exception"
-    private val start: Label = Label()
-    private val end: Label = Label()
-    private val catchStart = Label()
+    private lateinit var from: Label
+    private lateinit var to: Label
+    private val target = Label()
+    private val tryCatchMap = hashMapOf<Label, Label>()
 
     override fun visitCode() {
         super.visitCode()
@@ -30,32 +32,39 @@ class VoidReturnTryCatchVisitor(
     }
 
     override fun onMethodEnter() {
+        context.logger().d("onMethodEnter")
+        from = newLabel()
+        to = newLabel().apply {
+            tryCatchMap[from] = this
+        }
         visitTryCatchBlock(
-            start,
-            end,
-            catchStart,
+            from,
+            to,
+            target,
             error
         )
-        visitLabel(start)
+        visitLabel(from)
         super.onMethodEnter()
     }
 
     override fun onMethodExit(opcode: Int) {
-        mv.visitLabel(end)
-        finalGoLabel = newLabel()
-        mv.visitJumpInsn(GOTO, finalGoLabel)
-        mv.visitLabel(catchStart)
-        mv.visitVarInsn(Opcodes.ASTORE, nextLocal)
-        mv.visitVarInsn(Opcodes.ALOAD, nextLocal)
-        mv.visitMethodInsn(
-            Opcodes.INVOKEVIRTUAL,
-            "java/lang/Exception",
-            "printStackTrace",
-            "()V",
-            false
-        )
+        tryCatchMap.remove(from)?.let {
+            mv.visitLabel(it)
+            finalGoLabel = newLabel()
+            mv.visitJumpInsn(GOTO, finalGoLabel)
+            mv.visitLabel(target)
+            mv.visitVarInsn(Opcodes.ASTORE, nextLocal)
+            mv.visitVarInsn(Opcodes.ALOAD, nextLocal)
+            mv.visitMethodInsn(
+                Opcodes.INVOKEVIRTUAL,
+                "java/lang/Exception",
+                "printStackTrace",
+                "()V",
+                false
+            )
 
-        mv.visitLabel(finalGoLabel)
+            mv.visitLabel(finalGoLabel)
+        }
         super.onMethodExit(opcode)
         context.logger().d("onMethodExit")
     }

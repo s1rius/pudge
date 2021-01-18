@@ -15,12 +15,15 @@ class HasReturnVisitor(
     descriptor: String?
 ) : AdviceAdapter(api, methodVisitor, access, name, descriptor) {
 
+    private val error = IWillFixContext.ERR
+
     private var tempStore: Int = -1
-    private val error = "java/lang/Exception"
+
     private lateinit var from: Label
     private lateinit var to: Label
-    private var tryCatchLabelMap = hashMapOf<Label, Label>()
     private val target = Label()
+    private var tryCatchLabelMap = hashMapOf<Label, Label>()
+
 
     override fun visitCode() {
         super.visitCode()

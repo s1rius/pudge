@@ -2,8 +2,8 @@ package wtf.s1.willfix.core
 
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Type
-import wtf.s1.willfix.core.visitors.HasReturnVisitor
-import wtf.s1.willfix.core.visitors.VoidReturnTryCatchVisitor
+import wtf.s1.willfix.core.visitors.HasReturnMethodTransformer
+import wtf.s1.willfix.core.visitors.VoidReturnMethodTransformer
 import java.util.HashMap
 
 class MethodDetector(
@@ -57,7 +57,11 @@ class MethodDetector(
         context.logger().d(mOptimizationNeededMethods.toString())
     }
 
-    private fun isMethodNeedTryCatch(className: String?, methodName: String?, desc: String?): Boolean {
+    private fun isMethodNeedTryCatch(
+        className: String?,
+        methodName: String?,
+        desc: String?
+    ): Boolean {
         if (className == null || methodName == null || desc == null) {
             return false
         }
@@ -91,10 +95,28 @@ class MethodDetector(
             context.logger().i("transform this method $access $name $descriptor")
             if (Type.getReturnType(descriptor) == Type.VOID_TYPE) {
                 context.logger().d("void return")
-                VoidReturnTryCatchVisitor(context, methodVisitor, this.api, access, name, descriptor)
+                VoidReturnMethodTransformer(
+                    context,
+                    methodVisitor,
+                    this.api,
+                    access,
+                    name,
+                    descriptor,
+                    signature,
+                    exceptions
+                )
             } else {
                 context.logger().d("has return")
-                HasReturnVisitor(context, methodVisitor, this.api, access, name, descriptor)
+                HasReturnMethodTransformer(
+                    context,
+                    methodVisitor,
+                    this.api,
+                    access,
+                    name,
+                    descriptor,
+                    signature,
+                    exceptions
+                )
             }
         } else {
             methodVisitor

@@ -6,6 +6,7 @@ import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.ClassWriter
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
+import org.objectweb.asm.tree.ClassNode
 import wtf.s1.willfix.core.ILogger
 import wtf.s1.willfix.core.IWillFixContext
 import wtf.s1.willfix.core.MethodDetector
@@ -43,12 +44,12 @@ open class WillFixContext(
         val methodList = extension?.methodList
         val separator: String = extension?.separator ?: "#"
 
-        detector = MethodDetector(Opcodes.ASM6, this, methodList, separator)
+        detector = MethodDetector(Constants.ASM_API, this, methodList, separator)
 
     }
 
     fun getClassVisitor(cw: ClassWriter): ClassVisitor {
-        return WillFixClassVisitor(Opcodes.ASM6, cw, this)
+        return WillFixClassVisitor(Constants.ASM_API, cw, this)
     }
 
     override fun methodVisitor(

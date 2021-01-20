@@ -18,19 +18,13 @@ class WillFixByteXPlugin : CommonPlugin<WillFixByteXExtension, WillFixByteXConte
         return WillFixByteXContext(project, android, extension)
     }
 
-
     override fun transformConfiguration(): TransformConfiguration {
         return object : TransformConfiguration {
             override fun isIncremental(): Boolean {
                 //插件默认是增量的，如果插件不支持增量，需要返回false
                 //The plugin is incremental by default.It should return false if incremental is not supported by the plugin
-                return false
+                return true
             }
-            //            @NotNull
-            //            @Override
-            //            public Set<? super QualifiedContent.Scope> getScopes(@Nullable VariantScope variantScope) {
-            //                return TransformManager.SCOPE_FULL_PROJECT_WITH_LOCAL_JARS;
-            //            }
         }
     }
 

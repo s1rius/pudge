@@ -10,6 +10,7 @@ willFixByteX {
     enable true
     enableInDebug true
     logLevel "DEBUG"
+    exceptionHandler "wtf.s1.willfix.ExceptionHandler#log#(Ljava/lang/Exception;)V"
     methodList = [
             "wtf.s1.willfix.TestSetGet#getDesc#()I",
             "wtf.s1.willfix.TestSetGet#setDesc#(Ljava/lang/String;Z)V",

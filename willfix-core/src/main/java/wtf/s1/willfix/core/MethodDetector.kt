@@ -1,7 +1,9 @@
 package wtf.s1.willfix.core
 
 import org.objectweb.asm.MethodVisitor
+import org.objectweb.asm.Opcodes
 import org.objectweb.asm.Type
+import org.objectweb.asm.tree.MethodInsnNode
 import wtf.s1.willfix.core.visitors.HasReturnMethodTransformer
 import wtf.s1.willfix.core.visitors.VoidReturnMethodTransformer
 import java.util.HashMap
@@ -10,10 +12,12 @@ class MethodDetector(
     private val api: Int,
     private val context: IWillFixContext,
     methodList: List<String>?,
-    private var separator: String = "#"
+    private var separator: String = "#",
+    catchHandler: String?
 ) {
 
     private val mOptimizationNeededMethods: MutableMap<String, Set<String>> = HashMap()
+    private var exceptionHandleNode: MethodInsnNode
 
     init {
         methodList?.let {
@@ -54,6 +58,7 @@ class MethodDetector(
             }
         }
 
+        exceptionHandleNode = getCatchMethod(catchHandler)
         context.logger().d(mOptimizationNeededMethods.toString())
     }
 
@@ -98,6 +103,7 @@ class MethodDetector(
                 VoidReturnMethodTransformer(
                     context,
                     methodVisitor,
+                    exceptionHandleNode,
                     this.api,
                     access,
                     name,
@@ -110,6 +116,7 @@ class MethodDetector(
                 HasReturnMethodTransformer(
                     context,
                     methodVisitor,
+                    exceptionHandleNode,
                     this.api,
                     access,
                     name,
@@ -137,5 +144,25 @@ class MethodDetector(
 
     private fun replaceDot2Slash(str: String): String {
         return str.replace('.', '/')
+    }
+
+    private fun getCatchMethod(catchHandler: String?): MethodInsnNode {
+        catchHandler?.let {
+            val split = it.split(separator.toRegex()).toTypedArray()
+            if (split.size == 3) {
+                return MethodInsnNode(
+                    Opcodes.INVOKESTATIC, getClazzKey(split[0]),
+                    split[1],
+                    split[2],
+                    false
+                )
+            }
+        }
+        return MethodInsnNode(
+            Opcodes.INVOKEVIRTUAL, "java/lang/Exception",
+            "printStackTrace",
+            "()V",
+            false
+        )
     }
 }

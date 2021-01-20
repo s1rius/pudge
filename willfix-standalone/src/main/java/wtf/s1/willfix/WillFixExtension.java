@@ -22,6 +22,8 @@ public class WillFixExtension {
 
     public String separator = "#";
 
+    public String exceptionHandler;
+
     private LevelLog.Level level = LevelLog.Level.INFO;
 
     public boolean isEnable() {
@@ -70,5 +72,13 @@ public class WillFixExtension {
 
     public void needVerify(boolean needVerify) {
         this.needVerify = needVerify;
+    }
+
+    public String getExceptionHandler() {
+        return exceptionHandler;
+    }
+
+    public void exceptionHandler(String catchHandler) {
+        this.exceptionHandler = catchHandler;
     }
 }

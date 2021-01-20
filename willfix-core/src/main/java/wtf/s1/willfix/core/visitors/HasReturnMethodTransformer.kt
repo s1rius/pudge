@@ -11,6 +11,7 @@ import wtf.s1.willfix.core.const0Opcode
 class HasReturnMethodTransformer(
     context: IWillFixContext,
     methodVisitor: MethodVisitor,
+    private val catchMethod: MethodInsnNode,
     api: Int,
     access: Int,
     name: String?,
@@ -70,19 +71,13 @@ class HasReturnMethodTransformer(
         val exceptionLocal = nextLocalIndex + 1
         afterInsnList.add(VarInsnNode(Opcodes.ASTORE, exceptionLocal))
         afterInsnList.add(VarInsnNode(Opcodes.ALOAD, exceptionLocal))
-        afterInsnList.add(
-            MethodInsnNode(
-                Opcodes.INVOKEVIRTUAL, "java/lang/Exception",
-                "printStackTrace",
-                "()V",
-                false
-            )
-        )
+        afterInsnList.add(catchMethod)
+
         afterInsnList.add(VarInsnNode(returnType.getOpcode(AdviceAdapter.ILOAD), nextLocalIndex))
         afterInsnList.add(InsnNode(returnType.getOpcode(AdviceAdapter.IRETURN)))
 
         instructions.insertBefore(firstNode, beforeInsnList)
         instructions.add(afterInsnList)
-        tryCatchBlocks.add(TryCatchBlockNode(from, to, target, "java/lang/Exception"))
+        tryCatchBlocks.add(TryCatchBlockNode(from, to, target, context.exceptionTypeName()))
     }
 }

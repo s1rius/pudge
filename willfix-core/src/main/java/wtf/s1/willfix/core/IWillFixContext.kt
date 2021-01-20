@@ -4,10 +4,6 @@ import org.objectweb.asm.MethodVisitor
 
 interface IWillFixContext {
 
-    companion object {
-        const val ERR = "java/lang/Exception"
-    }
-
     fun logger(): ILogger
 
     fun methodVisitor(
@@ -19,4 +15,6 @@ interface IWillFixContext {
         exceptions: Array<out String>?,
         methodVisitor: MethodVisitor
     ): MethodVisitor
+
+    fun exceptionTypeName(): String
 }

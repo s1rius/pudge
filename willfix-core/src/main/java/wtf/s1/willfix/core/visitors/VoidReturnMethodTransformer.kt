@@ -9,6 +9,7 @@ import wtf.s1.willfix.core.IWillFixContext
 class VoidReturnMethodTransformer(
     context: IWillFixContext,
     methodVisitor: MethodVisitor,
+    private val catchHandler: MethodInsnNode,
     api: Int,
     access: Int,
     name: String?,
@@ -43,18 +44,11 @@ class VoidReturnMethodTransformer(
             val nextLocal = localVariables.size
             addInsnList.add(VarInsnNode(Opcodes.ASTORE, nextLocal))
             addInsnList.add(VarInsnNode(Opcodes.ALOAD, nextLocal))
-            addInsnList.add(
-                MethodInsnNode(
-                    Opcodes.INVOKEVIRTUAL, "java/lang/Exception",
-                    "printStackTrace",
-                    "()V",
-                    false
-                )
-            )
+            addInsnList.add(catchHandler)
             addInsnList.add(go)
             instructions.insertBefore(returnNode, addInsnList)
 
-            tryCatchBlocks.add(TryCatchBlockNode(from, to, target, "java/lang/Exception"))
+            tryCatchBlocks.add(TryCatchBlockNode(from, to, target, context.exceptionTypeName()))
         }
     }
 

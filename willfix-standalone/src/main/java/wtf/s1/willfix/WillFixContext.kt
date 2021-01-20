@@ -5,8 +5,6 @@ import org.gradle.api.Project
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.ClassWriter
 import org.objectweb.asm.MethodVisitor
-import org.objectweb.asm.Opcodes
-import org.objectweb.asm.tree.ClassNode
 import wtf.s1.willfix.core.ILogger
 import wtf.s1.willfix.core.IWillFixContext
 import wtf.s1.willfix.core.MethodDetector
@@ -43,8 +41,14 @@ open class WillFixContext(
 
         val methodList = extension?.methodList
         val separator: String = extension?.separator ?: "#"
+        val catchHandler: String? = extension?.exceptionHandler
 
-        detector = MethodDetector(Constants.ASM_API, this, methodList, separator)
+        detector = MethodDetector(Constants.ASM_API,
+            this,
+            methodList,
+            separator,
+            catchHandler
+        )
 
     }
 
@@ -70,6 +74,10 @@ open class WillFixContext(
             exceptions,
             methodVisitor
         )
+    }
+
+    override fun exceptionTypeName(): String {
+        return "java/lang/Exception"
     }
 
     override fun logger(): ILogger {

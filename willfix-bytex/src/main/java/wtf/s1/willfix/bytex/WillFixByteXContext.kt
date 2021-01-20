@@ -21,7 +21,8 @@ public class WillFixByteXContext(
             Constants.ASM_API,
             this,
             extension?.methodList,
-            extension?.separator ?: "#"
+            extension?.separator ?: "#",
+            extension?.exceptionHandler
         )
     }
 
@@ -49,5 +50,9 @@ public class WillFixByteXContext(
             exceptions,
             methodVisitor
         )
+    }
+
+    override fun exceptionTypeName(): String {
+        return "java/lang/Exception"
     }
 }

@@ -14,6 +14,8 @@ public class WillFixByteXExtension extends BaseExtension {
 
     public String separator = "#";
 
+    public String exceptionHandler;
+
     public List<String> getMethodList() {
         return methodList;
     }
@@ -28,5 +30,13 @@ public class WillFixByteXExtension extends BaseExtension {
 
     public void separator(String separator) {
         this.separator = separator;
+    }
+
+    public String getExceptionHandler() {
+        return exceptionHandler;
+    }
+
+    public void exceptionHandler(String catchHandler) {
+        this.exceptionHandler = catchHandler;
     }
 }

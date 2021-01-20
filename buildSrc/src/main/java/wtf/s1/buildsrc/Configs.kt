@@ -1,6 +1,7 @@
 package wtf.s1.buildsrc
 
 object Versions{
+    const val willFix = "0.1.0"
     const val asm = "8.0.1"
     const val kotlin = "1.4.21"
     const val ktx = "1.0.0"
@@ -31,7 +32,7 @@ object Deps{
     }
 
     object AndroidX {
-        const val appcompat = "androidx.appcompat:appcompat:1.1.0"
+        const val appcompat = "androidx.appcompat:appcompat:1.2.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
         const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0"
         const val extension = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
@@ -45,6 +46,7 @@ object Deps{
 
     object ByteX {
         const val common = "com.bytedance.android.byteX:common:${Versions.bytex}"
+        const val base = "com.bytedance.android.byteX:base-plugin:0.2.5"
     }
 
     object ASM {
@@ -52,6 +54,14 @@ object Deps{
         const val asmUtil = "org.ow2.asm:asm-util:${Versions.asm}"
         const val asmCommons = "org.ow2.asm:asm-commons:${Versions.asm}"
     }
+
+    object WillFix {
+        const val willFixCore = "wtf.s1.pudge:will-fix-core:${Versions.willFix}"
+        const val willFixStandAlonePlugin = "wtf.s1.pudge:will-fix-plugin:${Versions.willFix}"
+        const val willFixByteX = "wtf.s1.pudge:will-fix-bytex:${Versions.willFix}"
+    }
+
+    const val firebasePref = "com.google.firebase:firebase-perf:19.0.9"
 }
 
 object ClassPaths {
@@ -60,4 +70,7 @@ object ClassPaths {
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val jfrogBintray = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
     const val dcendentsMavenPlugin = "com.github.dcendents:android-maven-gradle-plugin:2.1"
+
+
+    const val firebasePref = "com.google.firebase:perf-plugin:1.3.1"
 }

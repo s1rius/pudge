@@ -46,7 +46,7 @@ object Deps{
 
     object ByteX {
         const val common = "com.bytedance.android.byteX:common:${Versions.bytex}"
-        const val base = "com.bytedance.android.byteX:base-plugin:0.2.5"
+        const val base = "com.bytedance.android.byteX:base-plugin:${Versions.bytex}"
     }
 
     object ASM {

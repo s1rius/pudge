@@ -35,7 +35,6 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        // 声明插件信息，这里的 hello 名字随意
         willfix_plugin {
             // 插件ID
             id = 's1.willfix'

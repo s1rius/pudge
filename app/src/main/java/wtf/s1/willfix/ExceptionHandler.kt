@@ -1,11 +1,12 @@
-package wtf.s1.willfix;
+package wtf.s1.willfix
 
-import android.util.Log;
+import android.util.Log
 
-public class ExceptionHandler {
+object ExceptionHandler {
 
-    public static void log(Exception e) {
-        Log.i("exception found", "new one");
-        e.printStackTrace();
+    @JvmStatic
+    fun log(e: Exception) {
+        Log.i("exception found", "new one")
+        e.printStackTrace()
     }
 }

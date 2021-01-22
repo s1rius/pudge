@@ -6,8 +6,8 @@ willFix {
     logLevel "INFO"
     exceptionHandler "wtf.s1.willfix.ExceptionHandler#log#(Ljava/lang/Exception;)V"
     methodList = [
-            "wtf.s1.willfix.TestSetGet#getDesc#()I",
-            "wtf.s1.willfix.TestSetGet#setDesc#(Ljava/lang/String;Z)V",
+            "wtf.s1.willfix.Test#getMsgSize#()I",
+            "wtf.s1.willfix.Test#setError#(I)V",
             "com.google.firebase.perf.network.InstrumentOkHttpEnqueueCallback#onResponse#(Lokhttp3/Call;Lokhttp3/Response;)V"
     ]
 }

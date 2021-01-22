@@ -151,7 +151,8 @@ class MethodDetector(
             val split = it.split(separator.toRegex()).toTypedArray()
             if (split.size == 3) {
                 return MethodInsnNode(
-                    Opcodes.INVOKESTATIC, getClazzKey(split[0]),
+                    Opcodes.INVOKESTATIC,
+                    getClazzKey(split[0]),
                     split[1],
                     split[2],
                     false

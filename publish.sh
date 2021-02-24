@@ -1,3 +1,3 @@
-./gradlew :willfix-core:bintrayUpload
-./gradlew :willfix-standalone:bintrayUpload
-./gradlew :willfix-bytex:bintrayUpload
+./gradlew :willfix-core:publish
+./gradlew :willfix-standalone:publish
+./gradlew :willfix-bytex:publish

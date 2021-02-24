@@ -68,9 +68,7 @@ object ClassPaths {
     const val gradlePlugin = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
     const val gradleApi = "com.android.tools.build:gradle-api:${Versions.gradlePlugin}"
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    const val jfrogBintray = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
-    const val dcendentsMavenPlugin = "com.github.dcendents:android-maven-gradle-plugin:2.1"
-
-
+    const val vanniktechMavenPublishPlugin = "com.vanniktech:gradle-maven-publish-plugin:0.13.0"
+    const val dokaa = "org.jetbrains.dokka:dokka-gradle-plugin:1.4.10.2"
     const val firebasePref = "com.google.firebase:perf-plugin:1.3.1"
 }

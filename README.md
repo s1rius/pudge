@@ -36,6 +36,7 @@ WillFix 提供两种方式来进行接入
 	buildscript {
 	    repositories {
 	        google()
+	        mavenCentral()
 	        jcenter()
 	    }
 	
@@ -75,6 +76,7 @@ WillFix 提供两种方式来进行接入
 	buildscript {
 	    repositories {
 	        google()
+	        mavenCentral()
 	        jcenter()
 	    }
 	

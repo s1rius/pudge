@@ -1,10 +1,13 @@
-/*
- * Copyright (c) Facebook, Inc. and its affiliates.
+apply plugin: "com.vanniktech.maven.publish"
+/**
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ mavenPublish {
+    nexus {
+    //baseUrl = "https://your_nexus_instance" // defaults to "https://oss.sonatype.org/service/local/"
+    //stagingProfile = "net.example" // defaults to the SONATYPE_STAGING_PROFILE Gradle property or the GROUP Gradle Property if not set
+    respositoryUserName = project.ext.ossrhUsername
+    respositoryPassword = project.ext.ossrhPassword
+    }
+ }
+ *
  */
-apply from: rootProject.file('gradle/android-tasks.gradle')
-
-// Upload to Bintray
-apply from: project.rootProject.file('release-bintray.gradle')

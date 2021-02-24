@@ -1,22 +1,8 @@
 import wtf.s1.buildsrc.ClassPaths
 import wtf.s1.buildsrc.Deps
 
-buildscript {
-    repositories {
-        google()
-        jcenter()
-        maven {
-            url "https://repo.commonsware.com.s3.amazonaws.com"
-        }
-        maven { url "https://dl.bintray.com/s1rius/pudge" }
-    }
-}
-
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'kotlin'
-// apply plugin: 'maven'
-
-apply from: rootProject.file('release.gradle')
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -57,10 +43,4 @@ compileKotlin {
 version = VERSION_NAME
 group = GROUP
 
-//uploadArchives{ //当前项目可以发布到本地文件夹中
-//    repositories {
-//        mavenDeployer {
-//            repository(url: uri('../gradle-plugins')) //定义本地maven仓库的地址，方便我们生成的gradle插件代码直接导入进行调试
-//        }
-//    }
-//}
+apply from: rootProject.file('release.gradle')

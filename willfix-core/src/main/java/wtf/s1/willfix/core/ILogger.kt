@@ -13,22 +13,20 @@
      See the License for the specific language governing permissions and
      limitations under the License.
  */
-package wtf.s1.willfix.logging;
+package wtf.s1.willfix.core
 
-import org.gradle.api.logging.LogLevel;
-import org.gradle.api.logging.Logger;
-import org.gradle.api.logging.Logging;
-
-public class SystemLoggerImpl extends BaseLogger {
-
-    private final Logger logger = Logging.getLogger("WillFix");
-
-    @Override
-    protected synchronized void write(LogLevel level, String prefix, String msg, Throwable t) {
-        if (t != null) {
-            logger.log(level, String.format("[%-10s] %s", prefix, msg), t);
-        } else {
-            logger.log(level, String.format("[%-10s] %s", prefix, msg));
-        }
-    }
+interface ILogger {
+    open fun setTag(tag: String?)
+    fun d(msg: String?)
+    fun d(tag: String?, msg: String?)
+    fun i(msg: String?)
+    fun i(tag: String?, msg: String?)
+    fun w(msg: String?)
+    fun w(tag: String?, msg: String?)
+    fun w(msg: String?, t: Throwable?)
+    fun w(tag: String?, msg: String?, t: Throwable?)
+    fun e(msg: String?)
+    fun e(tag: String?, msg: String?)
+    fun e(msg: String?, t: Throwable?)
+    fun e(tag: String?, msg: String?, t: Throwable?)
 }

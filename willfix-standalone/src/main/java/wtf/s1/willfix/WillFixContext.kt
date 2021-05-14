@@ -24,7 +24,7 @@ open class WillFixContext(
     fun init(transformInvocation: TransformInvocation?) {
         this.transformInvocation = transformInvocation
 
-        if (extension?.enable == false) {
+        if (extension?.isEnable == false) {
             logger().w("will fix plugin disable")
             return
         }

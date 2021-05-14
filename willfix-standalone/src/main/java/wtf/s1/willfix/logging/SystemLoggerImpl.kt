@@ -13,34 +13,19 @@
      See the License for the specific language governing permissions and
      limitations under the License.
  */
-package wtf.s1.willfix.core;
+package wtf.s1.willfix.logging
 
+import org.gradle.api.logging.LogLevel
+import org.gradle.api.logging.Logging
 
-public interface ILogger {
-
-    void setTag(String tag);
-
-    void d(String msg);
-
-    void d(String tag, String msg);
-
-    void i(String msg);
-
-    void i(String tag, String msg);
-
-    void w(String msg);
-
-    void w(String tag, String msg);
-
-    void w(String msg, Throwable t);
-
-    void w(String tag, String msg, Throwable t);
-
-    void e(String msg);
-
-    void e(String tag, String msg);
-
-    void e(String msg, Throwable t);
-
-    void e(String tag, String msg, Throwable t);
+class SystemLoggerImpl : BaseLogger() {
+    private val logger = Logging.getLogger("WillFix")
+    @Synchronized
+    override fun write(level: LogLevel?, prefix: String?, msg: String?, t: Throwable?) {
+        if (t != null) {
+            logger.log(level, String.format("[%-10s] %s", prefix, msg), t)
+        } else {
+            logger.log(level, String.format("[%-10s] %s", prefix, msg))
+        }
+    }
 }

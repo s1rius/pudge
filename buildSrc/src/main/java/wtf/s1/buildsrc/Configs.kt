@@ -1,7 +1,7 @@
 package wtf.s1.buildsrc
 
 object Versions{
-    const val willFix = "0.1.0"
+    const val willFix = "0.1.1"
     const val asm = "8.0.1"
     const val kotlin = "1.4.21"
     const val ktx = "1.0.0"

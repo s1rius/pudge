@@ -40,7 +40,7 @@ class MethodDetector(
                         context.logger().w("Method ErrorMethodDes is empty!$item")
                         continue
                     }
-                    getClazzKey(split[0])?.let {
+                    getClazzKey(split[0]).let {
 
                         val set: MutableSet<String> =
                             mOptimizationNeededMethods.computeIfAbsent(getClazzKey(it)) { HashSet() } as HashSet<String>

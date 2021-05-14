@@ -3,17 +3,17 @@ package wtf.s1.buildsrc
 object Versions{
     const val willFix = "0.1.1"
     const val asm = "8.0.1"
-    const val kotlin = "1.4.21"
+    const val kotlin = "1.5.0"
     const val ktx = "1.0.0"
     const val coroutines = "1.3.2"
-    const val gradlePlugin ="3.6.3"
+    const val gradlePlugin ="4.1.0"
     const val lifecycle = "2.2.0"
     const val compileSdkVersion = 28
     const val minSdkVersion = 15
     const val targetSdkVersion = 28
     const val versionCode = 1
     const val versionName = "1.0.0"
-    const val bytex ="0.2.6"
+    const val bytex ="0.2.7"
 }
 
 object Plugins{
@@ -68,7 +68,7 @@ object ClassPaths {
     const val gradlePlugin = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
     const val gradleApi = "com.android.tools.build:gradle-api:${Versions.gradlePlugin}"
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    const val vanniktechMavenPublishPlugin = "com.vanniktech:gradle-maven-publish-plugin:0.13.0"
+    const val vanniktechMavenPublishPlugin = "com.vanniktech:gradle-maven-publish-plugin:0.14.0"
     const val dokaa = "org.jetbrains.dokka:dokka-gradle-plugin:1.4.10.2"
     const val firebasePref = "com.google.firebase:perf-plugin:1.3.1"
 }

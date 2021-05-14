@@ -16,7 +16,7 @@
 package wtf.s1.willfix.core
 
 interface ILogger {
-    open fun setTag(tag: String?)
+    fun setTag(tag: String?)
     fun d(msg: String?)
     fun d(tag: String?, msg: String?)
     fun i(msg: String?)

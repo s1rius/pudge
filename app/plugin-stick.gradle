@@ -1,0 +1,7 @@
+apply plugin: "s1.stick.bytex"
+stickByteX {
+    enable true
+    enableInDebug true
+    enableAnnotation true
+    logLevel "DEBUG"
+}

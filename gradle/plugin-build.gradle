@@ -1,0 +1,15 @@
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'kotlin'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+version = VERSION_NAME
+group = GROUP
+
+apply from: rootProject.file('release.gradle')

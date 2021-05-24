@@ -5,8 +5,8 @@ import wtf.s1.buildsrc.Deps
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation(project(":willfix-core"))
     compileOnly(ClassPaths.gradlePlugin)
     implementation(ClassPaths.gradleApi)
     implementation(Deps.ByteX.common)
+    implementation(project(':hugo2-core'))
 }

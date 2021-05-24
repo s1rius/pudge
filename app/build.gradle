@@ -11,8 +11,9 @@ buildscript {
 
     dependencies {
         classpath Deps.ByteX.base
-        classpath Deps.WillFix.willFixStandAlonePlugin
-        classpath Deps.WillFix.willFixByteX
+        classpath Deps.WillFix.byteX
+        classpath Deps.Stick.byteX
+        classpath Deps.Hugo2.byteX
         classpath ClassPaths.firebasePref // Performance Monitoring plugin
     }
 }
@@ -54,9 +55,12 @@ dependencies {
     implementation Deps.Kotlin.ktxCore
     implementation Deps.AndroidX.appcompat
     implementation Deps.firebasePref
-    implementation Deps.WillFix.willFixCore
-
+    implementation Deps.Stick.core
+    implementation Deps.Hugo2.core
 }
 
-apply from: "$rootDir/gradle/plugin-bytex.gradle"
-//apply from: "$rootDir/gradle/plugin-standalone.gradle"
+apply from: "$rootDir/app/plugin-bytex.gradle"
+apply from: "$rootDir/app/plugin-stick.gradle"
+apply from: "$rootDir/app/plugin-hugo2.gradle"
+apply from: "$rootDir/app/plugin-willfix.gradle"
+//apply from: "$rootDir/app/plugin-willfix-standalone.gradle"

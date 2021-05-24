@@ -1,0 +1,6 @@
+apply plugin: 'bytex'
+ByteX {
+    enable true
+    enableInDebug true
+    logLevel "DEBUG"
+}

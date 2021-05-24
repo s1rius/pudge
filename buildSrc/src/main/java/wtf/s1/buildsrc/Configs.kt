@@ -1,7 +1,7 @@
 package wtf.s1.buildsrc
 
 object Versions{
-    const val willFix = "0.1.1"
+    const val pudge = "0.1.1"
     const val asm = "8.0.1"
     const val kotlin = "1.5.0"
     const val ktx = "1.0.0"
@@ -56,9 +56,19 @@ object Deps{
     }
 
     object WillFix {
-        const val willFixCore = "wtf.s1.pudge:will-fix-core:${Versions.willFix}"
-        const val willFixStandAlonePlugin = "wtf.s1.pudge:will-fix-plugin:${Versions.willFix}"
-        const val willFixByteX = "wtf.s1.pudge:will-fix-bytex:${Versions.willFix}"
+        const val core = "wtf.s1.pudge:will-fix-core:${Versions.pudge}"
+        const val standAlonePlugin = "wtf.s1.pudge:will-fix-plugin:${Versions.pudge}"
+        const val byteX = "wtf.s1.pudge:will-fix-bytex:${Versions.pudge}"
+    }
+
+    object Stick {
+        const val core = "wtf.s1.pudge:stick-core:${Versions.pudge}"
+        const val byteX = "wtf.s1.pudge:stick-bytex:${Versions.pudge}"
+    }
+
+    object Hugo2 {
+        const val core = "wtf.s1.pudge:hugo2-core:${Versions.pudge}"
+        const val byteX = "wtf.s1.pudge:hugo2-bytex:${Versions.pudge}"
     }
 
     const val firebasePref = "com.google.firebase:firebase-perf:19.0.9"

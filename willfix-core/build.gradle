@@ -1,7 +1,8 @@
+apply from: rootProject.file('gradle/lib-build.gradle')
+
 import wtf.s1.buildsrc.ClassPaths
 import wtf.s1.buildsrc.Deps
 
-apply plugin: 'kotlin'
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -12,18 +13,3 @@ dependencies {
     compileOnly(Deps.ASM.asm)
     compileOnly(Deps.ASM.asmCommons)
 }
-
-
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
-version = VERSION_NAME
-group = GROUP
-
-apply from: rootProject.file('release.gradle')

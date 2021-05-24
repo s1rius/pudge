@@ -6,7 +6,7 @@ import wtf.s1.willfix.core.IWillFixContext
 
 abstract class WillFixMethodTransformer(
     protected val context: IWillFixContext,
-    val methodVisitor: MethodVisitor,
+    private val methodVisitor: MethodVisitor,
     api: Int,
     access: Int,
     name: String?,

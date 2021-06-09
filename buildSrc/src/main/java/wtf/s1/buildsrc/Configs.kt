@@ -2,6 +2,7 @@ package wtf.s1.buildsrc
 
 object Versions{
     const val pudge = "0.1.1"
+    const val pudgeDev = "0.1.2"
     const val asm = "8.0.1"
     const val kotlin = "1.5.0"
     const val ktx = "1.0.0"

@@ -1,3 +1,5 @@
+import wtf.s1.buildsrc.Versions
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
@@ -31,7 +33,7 @@ android {
 }
 
 
-version = VERSION_NAME
+version = Versions.pudgeDev
 group = GROUP
 
 apply from: rootProject.file('release.gradle')

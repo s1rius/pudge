@@ -10,6 +10,7 @@ class Hugo2MethodVisitor(
     private val methodVisitor: MethodVisitor,
     private val context: Hugo2ByteXContext,
     private val clazz: String?,
+    private val clazzAnnotated: Boolean = false,
     api: Int,
     access: Int,
     name: String?,
@@ -18,7 +19,7 @@ class Hugo2MethodVisitor(
     exceptions: Array<out String>?
 ) : MethodNode(api, access, name, descriptor, signature, exceptions) {
 
-    private var hasStickAnn: Boolean = false
+    private var methodAnnotated: Boolean = false
     private var firstLabel: Label? = null
     private val paramList = arrayListOf<TraceMethodParam>()
 
@@ -52,11 +53,11 @@ class Hugo2MethodVisitor(
     private fun methodTransform() {
         visibleAnnotations?.forEach {
             if (Hugo2.DEBUGLOGDESC == it.desc) {
-                hasStickAnn = true
+                methodAnnotated = true
             }
         }
 
-        if (!hasStickAnn) {
+        if (!methodAnnotated && !clazzAnnotated) {
             return
         }
 

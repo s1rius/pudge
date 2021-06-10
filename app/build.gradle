@@ -60,7 +60,7 @@ dependencies {
 }
 
 apply from: "$rootDir/app/plugin-bytex.gradle"
-apply from: "$rootDir/app/plugin-stick.gradle"
 apply from: "$rootDir/app/plugin-hugo2.gradle"
 apply from: "$rootDir/app/plugin-willfix.gradle"
+//apply from: "$rootDir/app/plugin-stick.gradle"
 //apply from: "$rootDir/app/plugin-willfix-standalone.gradle"

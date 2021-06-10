@@ -1,3 +1,4 @@
-./gradlew :willfix-core:publish
-./gradlew :willfix-standalone:publish
-./gradlew :willfix-bytex:publish
+#!/bin/sh
+echo "publish module $1"
+publish="./gradlew :$1:publish"
+$publish

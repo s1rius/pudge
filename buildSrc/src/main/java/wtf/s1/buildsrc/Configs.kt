@@ -2,7 +2,7 @@ package wtf.s1.buildsrc
 
 object Versions{
     const val pudge = "0.1.1"
-    const val pudgeDev = "0.1.2"
+    const val pudgeDev = "0.1.3"
     const val asm = "8.0.1"
     const val kotlin = "1.5.0"
     const val ktx = "1.0.0"
@@ -68,8 +68,8 @@ object Deps{
     }
 
     object Hugo2 {
-        const val core = "wtf.s1.pudge:hugo2-core:${Versions.pudge}"
-        const val byteX = "wtf.s1.pudge:hugo2-bytex:${Versions.pudge}"
+        const val core = "wtf.s1.pudge:hugo2-core:${Versions.pudgeDev}"
+        const val byteX = "wtf.s1.pudge:hugo2-bytex:${Versions.pudgeDev}"
     }
 
     const val firebasePref = "com.google.firebase:firebase-perf:19.0.9"

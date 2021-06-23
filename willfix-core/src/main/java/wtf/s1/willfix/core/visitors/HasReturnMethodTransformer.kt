@@ -37,7 +37,7 @@ class HasReturnMethodTransformer(
         val firstNode = instructions.first
         val returnType = Type.getReturnType(desc)
 
-        val nextLocalIndex = localVariables?.size ?: 0
+        val nextLocalIndex = maxLocals
         val beforeInsnList = InsnList()
         beforeInsnList.add(InsnNode(returnType.const0Opcode()))
         beforeInsnList.add(VarInsnNode(returnType.getOpcode(Opcodes.ISTORE), nextLocalIndex))

@@ -12,8 +12,8 @@ buildscript {
     dependencies {
         classpath Deps.ByteX.base
         classpath Deps.WillFix.byteX
-        classpath Deps.Stick.byteX
         classpath Deps.Hugo2.byteX
+        //classpath Deps.Stick.byteX
         classpath ClassPaths.firebasePref // Performance Monitoring plugin
     }
 }
@@ -38,7 +38,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -55,8 +59,8 @@ dependencies {
     implementation Deps.Kotlin.ktxCore
     implementation Deps.AndroidX.appcompat
     implementation Deps.firebasePref
-    implementation Deps.Stick.core
     implementation Deps.Hugo2.core
+    //implementation Deps.Stick.core
 }
 
 apply from: "$rootDir/app/plugin-bytex.gradle"

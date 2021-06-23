@@ -41,7 +41,7 @@ class VoidReturnMethodTransformer(
             addInsnList.add(to)
             addInsnList.add(JumpInsnNode(GOTO, go))
             addInsnList.add(target)
-            val nextLocal = localVariables.size
+            val nextLocal = maxLocals
             addInsnList.add(VarInsnNode(Opcodes.ASTORE, nextLocal))
             addInsnList.add(VarInsnNode(Opcodes.ALOAD, nextLocal))
             addInsnList.add(catchHandler)

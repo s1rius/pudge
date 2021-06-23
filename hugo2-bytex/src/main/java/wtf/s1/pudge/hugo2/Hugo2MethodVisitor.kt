@@ -148,7 +148,7 @@ class Hugo2MethodVisitor(
         il.add(TypeInsnNode(Opcodes.NEW, ParamsBuilder.CLAZZ))
         il.add(InsnNode(Opcodes.DUP))
         il.add(MethodInsnNode(Opcodes.INVOKESPECIAL, ParamsBuilder.CLAZZ, "<init>", "()V", false))
-        val pIndex = localVariables.size
+        val pIndex = maxLocals
         il.add(VarInsnNode(Opcodes.ASTORE, pIndex))
         paramList.forEach {
             it.paramDesc()?.let { desc ->

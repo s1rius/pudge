@@ -14,7 +14,7 @@ object Versions{
     const val targetSdkVersion = 28
     const val versionCode = 1
     const val versionName = "1.0.0"
-    const val bytex ="0.2.7"
+    const val bytex ="0.2.8"
 }
 
 object Plugins{

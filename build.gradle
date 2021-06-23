@@ -8,6 +8,9 @@ buildscript {
         google()
         mavenCentral()
         jcenter()
+        maven {
+            url "https://artifact.bytedance.com/repository"
+        }
     }
 
     dependencies {
@@ -24,5 +27,8 @@ allprojects {
         mavenCentral()
         jcenter()
         mavenLocal()
+        maven {
+            url "https://artifact.bytedance.com/repository"
+        }
     }
 }

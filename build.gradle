@@ -9,7 +9,7 @@ buildscript {
         mavenCentral()
         jcenter()
         maven {
-            url "https://artifact.bytedance.com/repository"
+            url "https://artifact.bytedance.com/repository/byteX/"
         }
     }
 
@@ -28,7 +28,7 @@ allprojects {
         jcenter()
         mavenLocal()
         maven {
-            url "https://artifact.bytedance.com/repository"
+            url "https://artifact.bytedance.com/repository/byteX/"
         }
     }
 }

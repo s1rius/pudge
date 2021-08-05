@@ -7,7 +7,7 @@ import wtf.s1.pudge.hugo2.DebugLog
 import wtf.s1.pudge.hugo2.Hugo2
 
 @DebugLog
-class App: Application() {
+class DebugApp: Application() {
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)

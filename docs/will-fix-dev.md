@@ -19,10 +19,10 @@ public class Test {
 
 ```
 
-在这个例子中，当`msg`为空时，调用getMsgSize()方法将会抛出NullPointerException。
-调用setError()方法时，如果参数传0则会抛出ArithmeticException。
+在这个例子中，当 `msg` 为空时，调用 getMsgSize() 方法将会抛出 NullPointerException。
+调用 setError() 方法时，如果参数传0则会抛出 ArithmeticException。
 
-为了防止这样的异常抛出导致程序崩溃，我们要在两个方法上都加上TryCatch的代码块，如下
+为了防止这样的异常抛出导致程序崩溃，我们要在两个方法上都加上 try-catch 的代码块，如下
 
 ```java
 public int getMsgSize() {
